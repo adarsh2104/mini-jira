@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-tgoty!v=x@dsg)vhk#sh*mn2mjwy3)x6@r5+flmxv8%x3cfbyd
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+PRODUCTION = False
 
 ALLOWED_HOSTS = []
 
@@ -101,17 +102,17 @@ DATABASES = {
     }
 }
 
-# TODO: Change DB based on env
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mini_jira_db',
-#         'USER': 'your_db_user',
-#         'PASSWORD': 'your_db_password',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+if PRODUCTION:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'mini_jira_db',
+            'USER': 'your_db_user',
+            'PASSWORD': 'your_db_password',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 CHANNEL_LAYERS = {
     "default": {
@@ -202,60 +203,3 @@ INVITATION_EMAIL_SUBJECT = "You're invited to join a project"
 
 # Task Comment Allow Edit Till
 COMMENT_EDIT_DURATION_SECONDS = 5 * 60  # 5 mins
-
-# # Log Config
-# LOG_DIR = Path.joinpath(BASE_DIR, "logs")
-# os.makedirs(LOG_DIR, exist_ok=True)
-
-# LOGGING = {
-#     "version": 1,
-#     "disable_existing_loggers": False,
-#     "formatters": {
-#         "verbose": {
-#             "format": "{levelname} {asctime} {module} {message}",
-#             "style": "{",
-#         },
-#         "simple": {
-#             "format": "{levelname} {message}",
-#             "style": "{",
-#         },
-#     },
-#     "handlers": {
-#         "console": {
-#             "level": "DEBUG",
-#             "class": "logging.StreamHandler",
-#             "formatter": "simple",
-#         },
-#         "file": {
-#             "level": "DEBUG",
-#             "class": "logging.FileHandler",
-#             "filename": os.path.join(LOG_DIR, "debug.log"),
-#             "formatter": "verbose",
-#         },
-#         "error_file": {
-#             "level": "ERROR",
-#             "class": "logging.FileHandler",
-#             "filename": os.path.join(LOG_DIR, "error.log"),
-#             "formatter": "verbose",
-#         },
-#     },
-#     "loggers": {
-#         "django": {
-#             "handlers": ["console", "file"],
-#             "level": "DEBUG",
-#             "propagate": True,
-#         },
-#         "django.request": {
-#             "handlers": ["error_file"],
-#             "level": "ERROR",
-#             "propagate": False,
-#         },
-#         "django.db.backends": {
-#             "handlers": ["console"],
-#             "level": "DEBUG",
-#             "propagate": False,
-#         },
-#     },
-# }
-
-
