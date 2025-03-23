@@ -141,13 +141,13 @@ class CommentMarkAsReadView(APIView):
 
     def get_object(self, uuid):
         try:
-            return TaskComment.objects.get(id=uuid, is_active=True)
-        except Task.DoesNotExist:
+            return TaskComment.objects.get(id=uuid)
+        except TaskComment.DoesNotExist:
             return None
 
     def post(self, request, comment_uuid):
         instance = self.get_object(comment_uuid)
         if instance:
-            instance.mark_as_read()
+            instance.mark_as_read(request.user)
             return Response(status=status.HTTP_200_OK)
         return Response({"detail": "Comment not found."}, status=status.HTTP_404_NOT_FOUND)

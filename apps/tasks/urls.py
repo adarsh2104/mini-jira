@@ -4,7 +4,8 @@ from tasks.views import (
     TaskDetailView,
     TaskCreateView,
     TaskDiscussionView,
-    TaskCommentView
+    TaskCommentView,
+    CommentMarkAsReadView
 )
 
 urlpatterns = [
@@ -13,5 +14,5 @@ urlpatterns = [
     path("detail/<uuid:uuid>", TaskDetailView.as_view(), name="task_detail"),
     path("discussions/<uuid:task_uuid>", TaskDiscussionView.as_view(), name="task_discussion"),
     path("comments/<uuid:task_uuid>", TaskCommentView.as_view(), name="task_comments"),
-    path("comments/<uuid:comment_uuid>/mark-as-read/", TaskCommentView.as_view(), name="task_comments"),
+    path("comments/<uuid:comment_uuid>/mark-as-read/", CommentMarkAsReadView.as_view(), name="task_comments"),
 ]
