@@ -1,12 +1,10 @@
+from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.permissions import IsAuthenticated
-from django.db.models import Q
+
 from projects.models import Project
 from projects.serializers import ProjectListSerializer, ProjectCreateSerializer, ProjectDetailSerializer
-from rest_framework.generics import ListAPIView
 from projects.permissions import ProjectCollaboratorPermission
 
 
@@ -17,37 +15,6 @@ class ProjectListView(ListAPIView):
         projects = Project.objects.all()
         serializer = ProjectListSerializer(projects, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-    # def get(self, request):
-    #     projects = Project.objects.all()
-
-    #     paginator = PageNumberPagination()
-    #     paginator.page_size = 10
-    #     paginated_projects = paginator.paginate_queryset(projects, request)
-    #     serializer = ProjectListSerializer(paginated_projects, many=True)
-    #     return paginator.get_paginated_response(serializer.data)
-
-    # def get(self, request):
-    #     order_by = request.query_params.get('order_by', '-created_at')
-    #     search = request.query_params.get('search', '')
-
-    #     # Filtering Projects based on search query (if any)
-    #     projects = Project.objects.filter(
-    #         Q(name__icontains=search) |
-    #         Q(description__icontains=search)
-    #     ).order_by(order_by)
-
-    #     # Pagination setup
-    #     paginator = PageNumberPagination()
-    #     paginator.page_size = 10  # Or set to whatever you'd like
-    #     paginated_projects = paginator.paginate_queryset(projects, request)
-
-    #     # Serialize paginated results
-    #     serializer = ProjectSerializer(paginated_projects, many=True)
-
-    #     # Return paginated response
-    #     return paginator.get_paginated_response(serializer.data)
 
 
 class ProjectCreateView(APIView):

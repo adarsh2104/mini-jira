@@ -1,6 +1,10 @@
 from django.urls import path
-from collaborations.views import ProjectInvitationCreateView, ProjectInvitationResponseView, ProjectInvitationListView
 
+from collaborations.views import (
+    ProjectInvitationCreateView,
+    ProjectInvitationResponseView,
+    ProjectInvitationListView
+)
 
 urlpatterns = [
     path("send-invite/", ProjectInvitationCreateView.as_view(), name="send_invite"),

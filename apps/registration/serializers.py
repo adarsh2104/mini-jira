@@ -1,10 +1,12 @@
-from rest_framework import serializers
-from mini_jira.models import User
-from organizations.models import Organization
-from rest_framework.validators import UniqueValidator
-from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.contrib.auth.models import Group
+from django.utils.translation import gettext_lazy as _
+
+from organizations.models import Organization
+from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
+
+from mini_jira.models import User
 
 
 class OrganizationSerializer(serializers.ModelSerializer):

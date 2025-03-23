@@ -1,8 +1,9 @@
 
 from rest_framework.permissions import IsAuthenticated
-from projects.models import Project
+
 from mini_jira import constants
 
+from projects.models import Project
 
 class ProjectCollaboratorPermission(IsAuthenticated):
     message = "Permission denied"

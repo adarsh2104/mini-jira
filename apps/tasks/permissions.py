@@ -1,7 +1,7 @@
 
 from rest_framework.permissions import IsAuthenticated
+
 from tasks.models import Task
-from mini_jira import constants
 
 
 class TaskCollaboratorPermission(IsAuthenticated):

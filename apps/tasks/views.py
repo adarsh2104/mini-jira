@@ -1,12 +1,19 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-from tasks.models import Task, TaskComment, TaskDiscussion
+
 from projects.models import Project
-from tasks.serializers import TaskListSerializer, TaskCreateSerializer, TaskDetailSerializer, TaskDiscussionSerializer, TaskDiscussionCreateSerializer, TaskCommentSerializer
-from tasks.permissions import TaskCollaboratorPermission
 from projects.permissions import ProjectCollaboratorPermission
+from tasks.models import Task, TaskComment, TaskDiscussion
+from tasks.serializers import (
+    TaskListSerializer,
+    TaskCreateSerializer,
+    TaskDetailSerializer,
+    TaskDiscussionSerializer,
+    TaskDiscussionCreateSerializer,
+    TaskCommentSerializer
+)
+from tasks.permissions import TaskCollaboratorPermission
 
 
 class TaskListView(APIView):

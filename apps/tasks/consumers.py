@@ -1,9 +1,10 @@
-from channels.generic.websocket import AsyncJsonWebsocketConsumer
 from channels.db import database_sync_to_async
+from channels.generic.websocket import AsyncJsonWebsocketConsumer
+
+from mini_jira.models import User
 
 from tasks.models import TaskComment, TaskDiscussionMessage
-from tasks.serializers import CommentSerializer, TaskDiscussionMessageSerializer, TaskCommentSerializer
-from mini_jira.models import User
+from tasks.serializers import CommentSerializer, TaskDiscussionMessageSerializer
 
 
 class TaskUpdateConsumer(AsyncJsonWebsocketConsumer):

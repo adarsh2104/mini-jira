@@ -1,4 +1,5 @@
 from django.db import models
+
 from invitations.models import Invitation
 from projects.models import Project
 

@@ -1,7 +1,8 @@
 from django.db import models
-from mini_jira.models import BaseTimeStampedModel
+
 from organizations.models import Organization
-from mini_jira.models import User
+
+from mini_jira.models import BaseTimeStampedModel, User
 
 
 class Project(BaseTimeStampedModel):

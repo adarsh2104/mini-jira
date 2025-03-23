@@ -1,6 +1,7 @@
 from rest_framework import serializers
+
 from projects.models import Project
-# from accounts.serializers import UserSerializer
+
 from mini_jira.models import User
 
 

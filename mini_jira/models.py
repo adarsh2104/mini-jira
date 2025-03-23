@@ -1,9 +1,8 @@
+import threading
 import uuid
 
-
-from django.db import models
 from django.contrib.auth import get_user_model
-import threading
+from django.db import models
 
 User = get_user_model()
 _thread_locals = threading.local()
@@ -25,8 +24,18 @@ class AbstractUUIDModel(models.Model):
 
 
 class BaseTimeStampedModel(AbstractUUIDModel):
-    created_by = models.ForeignKey(User, related_name="%(class)s_created_by", on_delete=models.CASCADE)
-    modified_by = models.ForeignKey(User, related_name="%(class)s_modified_by", on_delete=models.SET_NULL, null=True, blank=True)
+    created_by = models.ForeignKey(
+        User,
+        related_name="%(class)s_created_by",
+        on_delete=models.CASCADE
+    )
+    modified_by = models.ForeignKey(
+        User,
+        related_name="%(class)s_modified_by",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

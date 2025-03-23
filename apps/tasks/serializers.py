@@ -1,8 +1,11 @@
-from rest_framework import serializers
-from projects.models import Project
-from mini_jira.models import User
-from tasks.models import Task, TaskDiscussion, TaskDiscussionMessage, TaskComment
 from django.conf import settings
+
+from rest_framework import serializers
+
+from projects.models import Project
+from tasks.models import Task, TaskDiscussion, TaskDiscussionMessage, TaskComment
+from mini_jira.models import User
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
